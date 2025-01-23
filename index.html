@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .number-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #333;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .number-selector button {
+      background: #555;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .number-selector button:hover {
+      background: #777;
+    }
+
+    .number {
+      font-size: 24px;
+      color: red;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .color-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .color-box {
+      width: 40px;
+      height: 20px;
+      border: 2px solid white;
+      background: red;
+    }
+
+    .input-field {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .input-field input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background: #222;
+      color: white;
+    }
+
+    .input-field button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      background: #555;
+      color: white;
+      cursor: pointer;
+    }
+
+    .input-field button:hover {
+      background: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="input-field">
+      <input type="number" id="numberInput" placeholder="Enter your number">
+      <button onclick="sendNumber()">Send</button>
+    </div>
+
+    <div class="number-selector">
+      <button onclick="decreaseNumber()">-</button>
+      <div id="number" class="number">19</div>
+      <button onclick="increaseNumber()">+</button>
+    </div>
+
+    <div class="color-selector">
+      <span>Select color</span>
+      <div id="colorBox" class="color-box"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentNumber = 19;
+    const numberElement = document.getElementById('number');
+    const colorBox = document.getElementById('colorBox');
+
+    function increaseNumber() {
+      currentNumber++;
+      updateNumber();
+    }
+
+    function decreaseNumber() {
+      currentNumber--;
+      updateNumber();
+    }
+
+    function updateNumber() {
+      numberElement.textContent = currentNumber;
+    }
+
+    function sendNumber() {
+      const inputField = document.getElementById('numberInput');
+      alert(`Number sent: ${inputField.value}`);
+    }
+
+    // Optional: Add color picker functionality (if needed)
+    colorBox.addEventListener('click', () => {
+      const newColor = prompt('Enter a color (e.g., red, blue, #123456):', 'red');
+      if (newColor) {
+        colorBox.style.backgroundColor = newColor;
+      }
+    });
+  </script>
+</body>
+</html>
